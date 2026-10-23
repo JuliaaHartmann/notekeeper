@@ -46,8 +46,13 @@ export class Cadastro {
     afterNextRender(() => this.tituloPagina()?.nativeElement.focus());
   }
 
-  enviarFormulario(event: SubmitEvent) {
+  protected enviarFormulario(event: SubmitEvent) {
     event.preventDefault();
+
+    if (this.formularioCadastro().invalid()) {
+      this.formularioCadastro().markAsTouched();
+      return;
+    }
 
     const request: CadastroRequest = {
       nome: this.modeloFormulario().nome,
