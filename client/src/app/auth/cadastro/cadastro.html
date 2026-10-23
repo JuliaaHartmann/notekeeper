@@ -1,44 +1,122 @@
 <app-auth-shell>
-    <div class="mb-8">
-        <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">COMECE POR AQUI</p>
-        <h2 #tituloPagina tabindex="-1" class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none">
-            Crie sua conta
-        </h2>
+  <div class="mb-8">
+    <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">COMECE POR AQUI</p>
+    <h2
+      #tituloPagina
+      tabindex="-1"
+      class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none"
+    >
+      Crie sua conta
+    </h2>
 
-        <p class="mt-2 text-sm leading-6 text-slate-600">
-            Organize suas ideias em um só lugar.
+    <p class="mt-2 text-sm leading-6 text-slate-600">Organize suas ideias em um só lugar.</p>
+  </div>
+
+  <form (submit)="enviarFormulario($event)" novalidate class="space-y-5">
+    <div>
+      <label for="cadastro-nome" class="mb-2 block text-sm font-medium text-slate-800">Nome</label>
+
+      <input
+        id="cadastro-nome"
+        type="text"
+        autocomplete="name"
+        inputmode="text"
+        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        placeholder="Digite o seu nome"
+        [formField]="formularioCadastro.nome"
+        [attr.aria-invalid]="
+          formularioCadastro.nome().touched() && formularioCadastro.nome().invalid()
+        "
+        [attr.aria-describedby]="
+          formularioCadastro.nome().touched() && formularioCadastro.nome().invalid()
+            ? 'cadastro-nome-erro'
+            : null
+        "
+      />
+
+      @if (formularioCadastro.nome().touched() && formularioCadastro.nome().invalid()) {
+        <p id="cadastro-nome-erro" class="mt-1 text-sm text-rose-700">
+          {{ formularioCadastro.nome().errors()[0].message }}
         </p>
+      }
     </div>
 
-    <form novalidate class="space-y-5">
-        <div>
-            <label for="cadastro-email" class="mb-2 block text-sm font-medium text-slate-800">Email</label>
+    <div>
+      <label for="cadastro-email" class="mb-2 block text-sm font-medium text-slate-800"
+        >E-mail</label
+      >
 
-            <input id="cadastro-email" type="email" autocomplete="email" inputmode="email"
-                class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
-                placeholder="voce@exemplo.com" />
-        </div>
+      <input
+        id="cadastro-email"
+        type="email"
+        autocomplete="email"
+        inputmode="email"
+        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        placeholder="voce@exemplo.com"
+        [formField]="formularioCadastro.email"
+        [attr.aria-invalid]="
+          formularioCadastro.email().touched() && formularioCadastro.email().invalid()
+        "
+        [attr.aria-describedby]="
+          formularioCadastro.email().touched() && formularioCadastro.email().invalid()
+            ? 'cadastro-email-erro'
+            : null
+        "
+      />
+      @if (formularioCadastro.email().touched() && formularioCadastro.email().invalid()) {
+        <p id="cadastro-email-erro" class="mt-1 text-sm text-rose-700">
+          {{ formularioCadastro.email().errors()[0].message }}
+        </p>
+      }
+    </div>
 
-        <div>
-            <label for="cadastro-senha" class="mb-2 block text-sm font-medium text-slate-800">Senha</label>
+    <div>
+      <label for="cadastro-senha" class="mb-2 block text-sm font-medium text-slate-800"
+        >Senha</label
+      >
 
-            <input id="cadastro-senha" type="password" autocomplete="password"
-                class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
-                placeholder="Crie uma senha segura" />
-            <p id="dica-senha" class="mt-2 text-xs leading-5 text-slate-600">
-                Use ao menos 8 caracteres, incluindo um número e um símbolo.
-            </p>
-        </div>
+      <input
+        id="cadastro-senha"
+        type="password"
+        autocomplete="password"
+        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        placeholder="Crie uma senha segura"
+        [formField]="formularioCadastro.senha"
+        [attr.aria-invalid]="
+          formularioCadastro.senha().touched() && formularioCadastro.senha().invalid()
+        "
+        [attr.aria-describedby]="
+          formularioCadastro.senha().touched() && formularioCadastro.senha().invalid()
+            ? 'cadastro-senha-erro'
+            : null
+        "
+      />
 
-        <button type="submit"
-            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 disabled:cursor-wait disabled:opacity-70">
-            Criar minha conta <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>
-        </button>
-    </form>
+      <p id="dica-senha" class="mt-2 text-xs leading-5 text-slate-600">
+        Use ao menos 8 caracteres, incluindo um número e um símbolo.
+      </p>
 
-    <p class="mt-7 text-center text-sm text-slate-600">
-        Já tem uma conta?
-        <a routerLink="/login"
-            class="font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-900 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700">Entrar</a>
-    </p>
+      @if (formularioCadastro.senha().touched() && formularioCadastro.senha().invalid()) {
+        <p id="cadastro-senha-erro" class="mt-1 text-sm text-rose-700">
+          {{ formularioCadastro.senha().errors()[0].message }}
+        </p>
+      }
+    </div>
+
+    <button
+      type="submit"
+      class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 disabled:cursor-wait disabled:opacity-70"
+    >
+      Criar minha conta <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>
+    </button>
+  </form>
+
+  <p class="mt-7 text-center text-sm text-slate-600">
+    Já tem uma conta?
+    <a
+      routerLink="/login"
+      class="font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-900 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
+      >Entrar</a
+    >
+  </p>
 </app-auth-shell>
