@@ -31,3 +31,8 @@ export interface SessaoAutenticada {
   readonly token: TokenDto;
   readonly usuario: UsuarioDto;
 }
+
+export interface ApiValidationProblemDetails {
+  readonly detail?: string;
+  readonly errors?: Record<string, string[]>;
+}

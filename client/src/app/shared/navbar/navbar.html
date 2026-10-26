@@ -1,0 +1,38 @@
+<header class="border-b border-[#E1E8E8] bg-white">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+    <a
+      routerLink="/"
+      class="inline-flex items-center gap-3 rounded-lg text-lg font-semibold tracking-tight text-[#263238]"
+    >
+      <span
+        class="grid size-10 place-items-center rounded-xl bg-[#285C63] text-[#B9D8D7]"
+        aria-hidden="true"
+        >N</span
+      >
+      NoteKeeper
+    </a>
+
+    <span class="flex gap-2">
+      @if (sessaoAutenticada(); as sessao) {
+        <div class="flex items-center gap-3 sm:gap-5">
+          <p class="hidden text-sm text-[#657477] sm:block">
+            {{ sessao.usuario.email }}
+          </p>
+
+          <button
+            (click)="authService.encerrarSessao()"
+            class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#263238] hover:bg-[#F3F5F5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+          >
+            Sair
+          </button>
+        </div>
+      } @else {
+        <a
+          routerLink="/login"
+          class="rounded-lg bg-[#285C63] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+          >Entrar</a
+        >
+      }
+    </span>
+  </div>
+</header>
