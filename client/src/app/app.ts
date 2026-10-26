@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CategoriasShell } from './categorias/shell/categorias-shell';
 
 @Component({
-  imports: [RouterOutlet, CategoriasShell],
+  imports: [RouterOutlet],
   selector: 'app-root',
   templateUrl: './app.html',
 })
