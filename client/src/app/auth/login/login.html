@@ -1,28 +1,29 @@
 <app-auth-shell>
   <div class="mb-8">
-    <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">BEM-VINDO(a) DE VOLTA</p>
+    <p class="mb-3 text-sm font-semibold tracking-wide text-[#285C63]">BEM-VINDO(A) DE VOLTA</p>
+
     <h2
       #tituloPagina
-      class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none"
+      class="text-3xl font-semibold tracking-tight text-[#263238] focus:outline-none"
     >
       Acesse sua conta
     </h2>
 
-    <p class="mt-2 text-sm leading-6 text-slate-600">
-      Entre para continuar sua jornada de aprendizado
+    <p class="mt-2 text-sm leading-6 text-[#657477]">
+      Entre para encontrar suas ideias em um só lugar.
     </p>
   </div>
 
   <form (submit)="enviarFormulario($event)" novalidate class="space-y-5">
     <div>
-      <label for="login-email" class="mb-2 block text-sm font-medium text-slate-800">Email</label>
+      <label for="login-email" class="mb-2 block text-sm font-medium text-[#263238]"> Email </label>
 
       <input
         id="login-email"
         type="email"
         autocomplete="email"
         inputmode="email"
-        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
         placeholder="voce@exemplo.com"
         [formField]="formularioLogin.email"
         [attr.aria-invalid]="formularioLogin.email().touched() && formularioLogin.email().invalid()"
@@ -41,15 +42,15 @@
     </div>
 
     <div>
-      <label for="login-senha" class="mb-2 block text-sm font-medium text-slate-800">Senha</label>
+      <label for="login-senha" class="mb-2 block text-sm font-medium text-[#263238]"> Senha </label>
 
-      <span class="text-xs text-slate-500">Mínimo de 8 caracteres</span>
+      <span class="text-xs text-[#657477]">Mínimo de 8 caracteres</span>
 
       <input
         id="login-senha"
         type="password"
-        autocomplete="password"
-        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        autocomplete="current-password"
+        class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
         placeholder="Sua senha"
         [formField]="formularioLogin.senha"
         [attr.aria-invalid]="formularioLogin.senha().touched() && formularioLogin.senha().invalid()"
@@ -59,6 +60,7 @@
             : null
         "
       />
+
       @if (formularioLogin.senha().touched() && formularioLogin.senha().invalid()) {
         <p id="login-senha-erro" class="mt-1 text-sm text-rose-700">
           {{ formularioLogin.senha().errors()[0].message }}
@@ -68,17 +70,18 @@
 
     <button
       type="submit"
-      class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 disabled:cursor-wait disabled:opacity-70"
+      class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#285C63] px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63] disabled:cursor-wait disabled:opacity-70"
     >
-      Entrar na minha conta <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>
+      Entrar na minha conta
+      <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>
     </button>
   </form>
 
-  <p class="mt-7 text-center text-sm text-slate-600">
+  <p class="mt-7 text-center text-sm text-[#657477]">
     Ainda não tem uma conta?
     <a
       routerLink="/cadastro"
-      class="font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-900 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
+      class="font-semibold text-[#285C63] underline decoration-[#8FC3C2] underline-offset-4 hover:text-[#204A50] focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
       >Criar conta</a
     >
   </p>
