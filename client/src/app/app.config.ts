@@ -2,7 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
 import { environment } from '../environments/environment';
-import { URL_API } from './auth/auth.token';
+import { CHAVE_ARMAZENAMENTO, URL_API } from './auth/auth.token';
 
 const routes: Routes = [
   {
@@ -18,6 +18,24 @@ const routes: Routes = [
     loadComponent: () => import('./auth/login/login').then((c) => c.Login),
   },
   {
+    path: 'categorias',
+    loadComponent: () =>
+      import('./categorias/shell/categorias-shell').then((c) => c.CategoriasShell),
+    children: [
+      { path: '', redirectTo: 'listar', pathMatch: 'full' },
+      {
+        path: 'listar',
+        loadComponent: () =>
+          import('./categorias/listar/listar-categorias').then((c) => c.ListarCategorias),
+      },
+      {
+        path: 'cadastrar',
+        loadComponent: () =>
+          import('./categorias/cadastrar/cadastrar-categoria').then((c) => c.CadastrarCategoria),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: '',
   },
@@ -31,6 +49,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: URL_API,
       useValue: environment.urlApi,
+    },
+    {
+      provide: CHAVE_ARMAZENAMENTO,
+      useValue: 'notekeeper.sessao',
     },
   ],
 };
