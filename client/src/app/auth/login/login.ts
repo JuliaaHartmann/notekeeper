@@ -38,6 +38,7 @@ export class Login {
 
   protected readonly mensagemSucesso = signal('');
   protected readonly mensagemErro = signal('');
+  protected readonly enviandoFormulario = signal(false);
   private readonly tituloPagina = viewChild<ElementRef<HTMLHeadingElement>>('tituloPagina');
 
   constructor() {
@@ -71,10 +72,16 @@ export class Login {
     };
 
     this.mensagemErro.set('');
+    this.enviandoFormulario.set(true);
 
     const observer: Partial<Observer<TokenDto>> = {
-      next: () => void this.router.navigateByUrl('/'),
+      next: () => {
+        this.enviandoFormulario.set(false);
+
+        void this.router.navigateByUrl('/');
+      },
       error: (response: HttpErrorResponse) => {
+        this.enviandoFormulario.set(false);
         const mensagem =
           response.status === 401
             ? 'Email ou senha incorretos. Configura suas credenciais e tente novamente.'

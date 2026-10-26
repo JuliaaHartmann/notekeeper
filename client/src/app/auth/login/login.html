@@ -89,6 +89,8 @@
     <button
       type="submit"
       class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#285C63] px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63] disabled:cursor-wait disabled:opacity-70"
+      [disabled]="enviandoFormulario()"
+      [attr.aria-busy]="enviandoFormulario()"
     >
       Entrar na minha conta
       <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>

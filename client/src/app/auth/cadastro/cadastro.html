@@ -1,7 +1,8 @@
 <app-auth-shell>
   <div class="mb-8">
-    <p class="mb-3 text-sm font-semibold tracking-wide text-[#285C63]">VAMOS COMEÇAR</p>
-
+    <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">
+      ACESSO PARA SUA INSTITUIÇÃO
+    </p>
     <h2
       #tituloPagina
       tabindex="-1"
@@ -12,6 +13,15 @@
 
     <p class="mt-2 text-sm leading-6 text-[#657477]">Organize suas ideias em um só lugar.</p>
   </div>
+
+  @if (mensagemErro()) {
+    <div
+      class="mb-5 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900"
+      role="alert"
+    >
+      {{ mensagemErro() }}
+    </div>
+  }
 
   <form (submit)="enviarFormulario($event)" novalidate class="space-y-5">
     <div>
@@ -110,6 +120,8 @@
     <button
       type="submit"
       class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#285C63] px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63] disabled:cursor-wait disabled:opacity-70"
+      [disabled]="enviandoFormulario()"
+      [attr.aria-busy]="enviandoFormulario()"
     >
       <span>Criar minha conta</span>
       <svg lucideArrowRight class="size-4 shrink-0" aria-hidden="true"></svg>
