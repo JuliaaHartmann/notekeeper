@@ -1,7 +1,6 @@
 import { afterNextRender, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { LucideArrowRight } from '@lucide/angular';
-import { AuthShell } from '../shell/auth-shell';
 import { email, form, FormField, minLength, pattern, required } from '@angular/forms/signals';
 import { AuthService } from '../auth.service';
 import {
@@ -19,7 +18,7 @@ interface CadastroFormModel {
   readonly senha: string;
 }
 @Component({
-  imports: [LucideArrowRight, AuthShell, FormField, RouterLink],
+  imports: [LucideArrowRight, FormField, RouterLink],
   selector: 'app-cadastro',
   templateUrl: './cadastro.html',
 })
@@ -81,7 +80,7 @@ export class Cadastro {
           emailCadastrado: usuario.email,
         };
 
-        void this.router.navigateByUrl('/login', { state: estadoNavegacao });
+        void this.router.navigateByUrl('/auth/login', { state: estadoNavegacao });
       },
       error: (response: HttpErrorResponse) => {
         this.enviandoFormulario.set(false);

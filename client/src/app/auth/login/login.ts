@@ -9,7 +9,6 @@ import {
   LoginRequest,
   TokenDto,
 } from '../auth.models';
-import { AuthShell } from '../shell/auth-shell';
 import { AuthService } from '../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observer } from 'rxjs';
@@ -20,7 +19,7 @@ interface LoginFormModel {
 }
 
 @Component({
-  imports: [LucideArrowRight, AuthShell, FormField, RouterLink],
+  imports: [LucideArrowRight, FormField, RouterLink],
   selector: 'app-login',
   templateUrl: './login.html',
 })
