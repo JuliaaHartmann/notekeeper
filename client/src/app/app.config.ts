@@ -1,7 +1,8 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.development';
+import { authInterceptor } from './auth/auth.interceptor';
 import { CHAVE_ARMAZENAMENTO, URL_API } from './auth/auth.token';
 
 const routes: Routes = [
@@ -35,10 +36,17 @@ const routes: Routes = [
           import('./categorias/listar/listar-categorias').then((c) => c.ListarCategorias),
       },
       {
-        path: 'detalhes/:id',
+        path: 'detalhes/:categoriaId',
         loadComponent: () =>
-          import('./categorias/detalhes/detalhes-categoria').then((c) => c.DetalhesCurso),
+          import('./categorias/detalhes/detalhes-categoria').then((c) => c.DetalhesCategoria),
       },
+
+      {
+        path: 'editar/:categoriaId',
+        loadComponent: () =>
+          import('./categorias/editar/editar-categoria').then((c) => c.EditarCategoria),
+      },
+
       {
         path: 'cadastrar',
         loadComponent: () =>
@@ -56,7 +64,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     {
       provide: URL_API,
       useValue: environment.urlApi,
