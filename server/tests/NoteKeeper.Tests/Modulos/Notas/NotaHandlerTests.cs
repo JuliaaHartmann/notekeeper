@@ -202,12 +202,12 @@ public sealed class NotaHandlerTests
 
         // Act
         var result = await handler.Handle(
-            new AtualizarNotaCommand(usuarioId, nota.Id, "Lembrete", null, "Arquivada", []),
+            new AtualizarNotaCommand(usuarioId, nota.Id, "Lembrete", null, "Concluida", []),
             CancellationToken.None);
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal("Arquivada", result.Value.Status);
+        Assert.Equal("Concluida", result.Value.Status);
         repositorio.Verify(
             x => x.SalvarAsync(nota, It.IsAny<IReadOnlyCollection<Guid>?>(), It.IsAny<CancellationToken>()),
             Times.Once);

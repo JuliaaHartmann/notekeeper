@@ -15,6 +15,13 @@
     <span class="flex gap-2">
       @if (sessaoAutenticada(); as sessao) {
         <div class="flex items-center gap-3 sm:gap-5">
+          <a
+            routerLink="/notas/listar"
+            class="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-[#285C63] hover:bg-[#F3F5F5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+          >
+            <svg lucideFileText class="size-4" aria-hidden="true"></svg>
+            Minhas notas
+          </a>
           <p class="hidden text-sm text-[#657477] sm:block">
             {{ sessao.usuario.email }}
           </p>

@@ -60,7 +60,7 @@ O NoteKeeper é uma aplicação para registrar e organizar anotações em um só
 
 - **Título:** obrigatório, entre 2 e 100 caracteres;
 - **Descrição:** opcional, com até 300 caracteres;
-- **Status:** ativa ou arquivada;
+- **Status:** ativa ou concluída;
 - Notas criadas começam com status **ativa**;
 - **Categorias:** opcionais; uma nota pode não estar associada a nenhuma categoria;
 - Não é permitido cadastrar duas notas com o mesmo título.
@@ -80,16 +80,16 @@ dotnet run --project server/src/Api/NoteKeeper.Api.csproj
 
 Em desenvolvimento, a API aplica as migrations na inicialização. O Swagger/OpenAPI fica disponível em `/swagger`; exemplos de chamadas estão em `server/src/Api/NoteKeeper.Api.http`.
 
-| Método                 | Rota               | Acesso  | Operação                            |
-| ---------------------- | ------------------ | ------- | ----------------------------------- |
-| `POST`                 | `/auth/cadastro`   | Público | Cria conta com nome, e-mail e senha |
-| `POST`                 | `/auth/login`      | Público | Autentica e retorna JWT             |
-| `GET`                  | `/auth/me`         | Bearer  | Retorna os dados do usuário atual   |
-| `POST`                 | `/auth/logout`     | Bearer  | Revoga imediatamente o JWT atual    |
-| `GET`, `POST`          | `/categorias`      | Bearer  | Lista e cria categorias             |
-| `GET`, `PUT`, `DELETE` | `/categorias/{id}` | Bearer  | Consulta, edita e exclui categoria  |
+| Método                 | Rota               | Acesso  | Operação                                               |
+| ---------------------- | ------------------ | ------- | ------------------------------------------------------ |
+| `POST`                 | `/auth/cadastro`   | Público | Cria conta com nome, e-mail e senha                    |
+| `POST`                 | `/auth/login`      | Público | Autentica e retorna JWT                                |
+| `GET`                  | `/auth/me`         | Bearer  | Retorna os dados do usuário atual                      |
+| `POST`                 | `/auth/logout`     | Bearer  | Revoga imediatamente o JWT atual                       |
+| `GET`, `POST`          | `/categorias`      | Bearer  | Lista e cria categorias                                |
+| `GET`, `PUT`, `DELETE` | `/categorias/{id}` | Bearer  | Consulta, edita e exclui categoria                     |
 | `GET`, `POST`          | `/notas`           | Bearer  | Lista (com filtro opcional por categoria) e cria notas |
-| `GET`, `PUT`, `DELETE` | `/notas/{id}`      | Bearer  | Consulta, edita e exclui nota       |
+| `GET`, `PUT`, `DELETE` | `/notas/{id}`      | Bearer  | Consulta, edita e exclui nota                          |
 
 Os títulos são únicos por usuário sem diferenciar caixa ou espaços nas extremidades. A exclusão de categoria mantém as notas e remove somente as associações. O `PUT` da nota substitui a lista de categorias; use `categoriaIds: []` para remover todas. A sessão não usa refresh token: após a expiração, é necessário entrar novamente. Erros seguem `ProblemDetails` e erros de validação incluem mensagens por campo.
 
