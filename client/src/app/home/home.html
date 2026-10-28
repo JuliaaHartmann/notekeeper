@@ -1,28 +1,28 @@
-<main class="min-h-screen bg-[#F3F5F5] text-[#263238]">
+<main class="min-h-screen bg-slate-50 text-slate-950">
   <app-navbar></app-navbar>
 
   <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
     @if (sessaoAutenticada(); as sessao) {
       <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <p class="mb-4 text-sm font-semibold tracking-wide text-[#285C63]">
+          <p class="mb-4 text-sm font-semibold tracking-wide text-brand-700">
             SEU ESPAÇO DE ANOTAÇÕES
           </p>
 
-          <h1 class="max-w-2xl text-4xl font-semibold tracking-tight text-[#263238] sm:text-5xl">
+          <h1 class="max-w-2xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
             Que bom ter você por aqui.
           </h1>
 
-          <p class="mt-5 max-w-xl text-lg leading-8 text-[#657477]">
+          <p class="mt-5 max-w-xl text-lg leading-8 text-slate-600">
             Suas ideias merecem um lugar especial. Organize suas notas, encontre informações
             importantes e mantenha tudo o que importa sempre à mão.
           </p>
 
           <div
-            class="mt-8 inline-flex items-center gap-3 rounded-xl border border-[#B9D8D7] bg-[#EAF4F3] px-4 py-3 text-sm text-[#204A50]"
+            class="mt-8 inline-flex items-center gap-3 rounded-xl border border-brand-300 bg-brand-50 px-4 py-3 text-sm text-brand-800"
           >
             <span
-              class="grid size-7 place-items-center rounded-full bg-[#D5E9E7] font-bold text-[#285C63]"
+              class="grid size-7 place-items-center rounded-full bg-brand-100 font-bold text-brand-700"
               aria-hidden="true"
             >
               <svg lucideCheck class="size-4" aria-hidden="true"></svg>
@@ -32,49 +32,49 @@
           </div>
         </div>
 
-        <div class="rounded-3xl bg-[#263238] p-8 text-white shadow-xl shadow-[#263238]/10 sm:p-10">
+        <div class="rounded-3xl bg-slate-900 p-8 text-white shadow-xl shadow-slate-900/10 sm:p-10">
           <div class="mb-12 flex items-start justify-between">
             <span
-              class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-[#B9D8D7]"
+              class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-brand-300"
             >
               SUA ORGANIZAÇÃO, EM UM SÓ LUGAR
             </span>
-            <svg lucideSparkles class="size-6 text-[#8FC3C2]" aria-hidden="true"></svg>
+            <svg lucideSparkles class="size-6 text-brand-500" aria-hidden="true"></svg>
           </div>
 
           <h2 class="text-2xl font-semibold">Suas ideias merecem ser lembradas.</h2>
 
-          <p class="mt-3 leading-7 text-[#D6E0E1]">
+          <p class="mt-3 leading-7 text-slate-200">
             Organize suas anotações por categorias, mantenha suas informações acessíveis e encontre
             facilmente o que precisa.
           </p>
 
           <div class="mt-8 h-1.5 overflow-hidden rounded-full bg-white/10" aria-hidden="true">
-            <div class="h-full w-1/3 rounded-full bg-[#8FC3C2]"></div>
+            <div class="h-full w-1/3 rounded-full bg-brand-500"></div>
           </div>
 
-          <p class="mt-3 text-xs text-[#BECBCD]">Suas notas, do seu jeito.</p>
+          <p class="mt-3 text-xs text-slate-300">Suas notas, do seu jeito.</p>
         </div>
       </div>
     } @else {
       <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <p class="mb-4 text-sm font-semibold tracking-wide text-[#285C63]">
+          <p class="mb-4 text-sm font-semibold tracking-wide text-brand-700">
             SUAS IDEIAS, SEMPRE À MÃO
           </p>
 
-          <h1 class="max-w-2xl text-4xl font-semibold tracking-tight text-[#263238] sm:text-6xl">
+          <h1 class="max-w-2xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-6xl">
             Suas ideias merecem um lugar especial.
           </h1>
 
-          <p class="mt-5 max-w-xl text-lg leading-8 text-[#657477]">
+          <p class="mt-5 max-w-xl text-lg leading-8 text-slate-600">
             Organize suas anotações, guarde o que importa e encontre tudo quando precisar.
           </p>
 
           <div class="mt-8 flex flex-wrap gap-3">
             <a
               routerLink="/auth/cadastro"
-              class="rounded-xl bg-[#285C63] px-5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+              class="rounded-xl bg-brand-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
             >
               Começar agora
               <svg lucideArrowRight class="ml-1 inline size-4"></svg>
@@ -82,7 +82,7 @@
 
             <a
               routerLink="auth/login"
-              class="rounded-xl border border-[#D4DEDE] bg-white px-5 py-3.5 text-sm font-semibold text-[#263238] hover:bg-[#F3F5F5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+              class="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-950 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
             >
               Já tenho uma conta
             </a>
@@ -90,30 +90,30 @@
         </div>
 
         <div
-          class="relative rounded-3xl bg-[#263238] p-8 text-white shadow-xl shadow-[#263238]/10 sm:p-10"
+          class="relative rounded-3xl bg-slate-900 p-8 text-white shadow-xl shadow-slate-900/10 sm:p-10"
         >
           <div
-            class="absolute -right-5 -top-5 grid size-16 place-items-center rounded-2xl bg-[#B9D8D7] text-[#263238] shadow-lg"
+            class="absolute -right-5 -top-5 grid size-16 place-items-center rounded-2xl bg-brand-300 text-slate-900 shadow-lg"
             aria-hidden="true"
           >
             <svg lucideAward class="size-8" strokeWidth="1.7"></svg>
           </div>
 
-          <p class="text-sm font-medium text-[#B9D8D7]">UM PASSO PARA SUAS IDEIAS</p>
+          <p class="text-sm font-medium text-brand-300">UM PASSO PARA SUAS IDEIAS</p>
 
           <h2 class="mt-6 text-3xl font-semibold leading-tight">Ideias para depois</h2>
 
-          <p class="mt-4 leading-7 text-[#D6E0E1]">Aquela ideia que você não quer esquecer...</p>
+          <p class="mt-4 leading-7 text-slate-200">Aquela ideia que você não quer esquecer...</p>
 
           <div class="mt-10 flex items-center gap-4 border-t border-white/10 pt-6">
             <span
-              class="grid size-10 place-items-center rounded-full bg-white/10 text-[#B9D8D7]"
+              class="grid size-10 place-items-center rounded-full bg-white/10 text-brand-300"
               aria-hidden="true"
             >
               <svg lucideSparkles class="size-5"></svg>
             </span>
 
-            <p class="text-sm text-[#D6E0E1]">Suas ideias, sempre ao seu alcance.</p>
+            <p class="text-sm text-slate-200">Suas ideias, sempre ao seu alcance.</p>
           </div>
         </div>
       </div>

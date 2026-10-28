@@ -71,7 +71,7 @@ public sealed class EntidadesTests
         var usuarioId = Guid.NewGuid();
 
         // Act
-        var nota = new Nota(usuarioId, "  Minha Nota ", null, StatusNota.Concluida);
+        var nota = new Nota(usuarioId, "  Minha Nota ", null, StatusNota.Arquivada);
 
         // Assert
         Assert.Equal("Minha Nota", nota.Titulo);

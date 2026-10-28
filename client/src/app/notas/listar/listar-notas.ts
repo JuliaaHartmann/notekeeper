@@ -1,7 +1,16 @@
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {
+  LucideCalendarDays,
+  LucideFileText,
+  LucideNotebookPen,
+  LucidePencil,
+  LucideSearch,
+  LucideTrash2,
+  LucideX,
+} from '@lucide/angular';
 import { ApiValidationProblemDetails } from '../../auth/auth.models';
 import { CategoriaDto } from '../../categorias/categorias.models';
 import { CategoriasService } from '../../categorias/categoria.service';
@@ -9,7 +18,17 @@ import { NotaDto } from '../notas.models';
 import { NotasService } from '../nota.service';
 
 @Component({
-  imports: [DatePipe, RouterLink],
+  imports: [
+    DatePipe,
+    RouterLink,
+    LucideCalendarDays,
+    LucideFileText,
+    LucideNotebookPen,
+    LucidePencil,
+    LucideSearch,
+    LucideTrash2,
+    LucideX,
+  ],
   selector: 'app-listar-notas',
   templateUrl: './listar-notas.html',
 })
@@ -18,6 +37,17 @@ export class ListarNotas {
   private readonly notasService = inject(NotasService);
 
   protected readonly notas = signal<readonly NotaDto[]>([]);
+  protected readonly textoBusca = signal('');
+  protected readonly notasFiltradas = computed(() => {
+    const consulta = this.textoBusca().trim().toLowerCase();
+    if (!consulta) return this.notas();
+
+    return this.notas().filter(
+      (nota) =>
+        nota.titulo.toLowerCase().includes(consulta) ||
+        (nota.descricao ?? '').toLowerCase().includes(consulta),
+    );
+  });
   protected readonly categorias = signal<readonly CategoriaDto[]>([]);
   protected readonly categoriasSelecionadas = signal<readonly string[]>([]);
   protected readonly carregando = signal(true);
@@ -42,8 +72,14 @@ export class ListarNotas {
   }
 
   protected limparFiltros(): void {
+    const categoriasSelecionadas = this.categoriasSelecionadas().length > 0;
     this.categoriasSelecionadas.set([]);
-    this.carregarNotas();
+    this.textoBusca.set('');
+    if (categoriasSelecionadas) this.carregarNotas();
+  }
+
+  protected atualizarBusca(event: Event): void {
+    this.textoBusca.set((event.target as HTMLInputElement).value);
   }
 
   protected tentarCarregarNovamente(): void {

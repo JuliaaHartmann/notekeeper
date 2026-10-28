@@ -1,16 +1,14 @@
 <div class="mb-8">
-  <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">
-    ACESSO PARA SUA INSTITUIÇÃO
-  </p>
+  <p class="mb-3 text-sm font-semibold tracking-wide text-brand-700">ACESSO PARA SUA INSTITUIÇÃO</p>
   <h2
     #tituloPagina
     tabindex="-1"
-    class="text-3xl font-semibold tracking-tight text-[#263238] focus:outline-none"
+    class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none"
   >
     Crie sua conta
   </h2>
 
-  <p class="mt-2 text-sm leading-6 text-[#657477]">Organize suas ideias em um só lugar.</p>
+  <p class="mt-2 text-sm leading-6 text-slate-600">Organize suas ideias em um só lugar.</p>
 </div>
 
 @if (mensagemErro()) {
@@ -24,14 +22,14 @@
 
 <form (submit)="enviarFormulario($event)" novalidate class="space-y-5">
   <div>
-    <label for="cadastro-nome" class="mb-2 block text-sm font-medium text-[#263238]"> Nome </label>
+    <label for="cadastro-nome" class="mb-2 block text-sm font-medium text-slate-950"> Nome </label>
 
     <input
       id="cadastro-nome"
       type="text"
       autocomplete="name"
       inputmode="text"
-      class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
+      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-brand-400 focus:border-brand-700 focus:ring-4 focus:ring-brand-700/15 aria-[invalid=true]:border-rose-600"
       placeholder="Digite o seu nome"
       [formField]="formularioCadastro.nome"
       [attr.aria-invalid]="
@@ -52,7 +50,7 @@
   </div>
 
   <div>
-    <label for="cadastro-email" class="mb-2 block text-sm font-medium text-[#263238]">
+    <label for="cadastro-email" class="mb-2 block text-sm font-medium text-slate-950">
       E-mail
     </label>
 
@@ -61,7 +59,7 @@
       type="email"
       autocomplete="email"
       inputmode="email"
-      class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
+      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-brand-400 focus:border-brand-700 focus:ring-4 focus:ring-brand-700/15 aria-[invalid=true]:border-rose-600"
       placeholder="voce@exemplo.com"
       [formField]="formularioCadastro.email"
       [attr.aria-invalid]="
@@ -82,7 +80,7 @@
   </div>
 
   <div>
-    <label for="cadastro-senha" class="mb-2 block text-sm font-medium text-[#263238]">
+    <label for="cadastro-senha" class="mb-2 block text-sm font-medium text-slate-950">
       Senha
     </label>
 
@@ -90,7 +88,7 @@
       id="cadastro-senha"
       type="password"
       autocomplete="new-password"
-      class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
+      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-brand-400 focus:border-brand-700 focus:ring-4 focus:ring-brand-700/15 aria-[invalid=true]:border-rose-600"
       placeholder="Crie uma senha segura"
       [formField]="formularioCadastro.senha"
       [attr.aria-invalid]="
@@ -103,7 +101,7 @@
       "
     />
 
-    <p id="dica-senha" class="mt-2 text-xs leading-5 text-[#657477]">
+    <p id="dica-senha" class="mt-2 text-xs leading-5 text-slate-600">
       Use ao menos 8 caracteres, incluindo um número e um símbolo.
     </p>
 
@@ -116,7 +114,7 @@
 
   <button
     type="submit"
-    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#285C63] px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63] disabled:cursor-wait disabled:opacity-70"
+    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 disabled:cursor-wait disabled:opacity-70"
     [disabled]="enviandoFormulario()"
     [attr.aria-busy]="enviandoFormulario()"
   >
@@ -125,11 +123,11 @@
   </button>
 </form>
 
-<p class="mt-7 text-center text-sm text-[#657477]">
+<p class="mt-7 text-center text-sm text-slate-600">
   Já tem uma conta?
   <a
     routerLink="/login"
-    class="font-semibold text-[#285C63] underline decoration-[#8FC3C2] underline-offset-4 hover:text-[#204A50] focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+    class="font-semibold text-brand-700 underline decoration-brand-500 underline-offset-4 hover:text-brand-800 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
   >
     Entrar
   </a>

@@ -3,5 +3,5 @@ namespace NoteKeeper.Dominio.Modulos.Notas;
 public enum StatusNota
 {
     Ativa,
-    Concluida
+    Arquivada
 }

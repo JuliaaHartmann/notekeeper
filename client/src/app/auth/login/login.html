@@ -1,11 +1,11 @@
 <div class="mb-8">
-  <p class="mb-3 text-sm font-semibold tracking-wide text-[#285C63]">BEM-VINDO(A) DE VOLTA</p>
+  <p class="mb-3 text-sm font-semibold tracking-wide text-brand-700">BEM-VINDO(A) DE VOLTA</p>
 
-  <h2 #tituloPagina class="text-3xl font-semibold tracking-tight text-[#263238] focus:outline-none">
+  <h2 #tituloPagina class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none">
     Acesse sua conta
   </h2>
 
-  <p class="mt-2 text-sm leading-6 text-[#657477]">
+  <p class="mt-2 text-sm leading-6 text-slate-600">
     Entre para encontrar suas ideias em um só lugar.
   </p>
 </div>
@@ -30,14 +30,14 @@
 
 <form (submit)="enviarFormulario($event)" novalidate class="space-y-5">
   <div>
-    <label for="login-email" class="mb-2 block text-sm font-medium text-[#263238]"> Email </label>
+    <label for="login-email" class="mb-2 block text-sm font-medium text-slate-950"> Email </label>
 
     <input
       id="login-email"
       type="email"
       autocomplete="email"
       inputmode="email"
-      class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
+      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-brand-400 focus:border-brand-700 focus:ring-4 focus:ring-brand-700/15 aria-[invalid=true]:border-rose-600"
       placeholder="voce@exemplo.com"
       [formField]="formularioLogin.email"
       [attr.aria-invalid]="formularioLogin.email().touched() && formularioLogin.email().invalid()"
@@ -56,15 +56,15 @@
   </div>
 
   <div>
-    <label for="login-senha" class="mb-2 block text-sm font-medium text-[#263238]"> Senha </label>
+    <label for="login-senha" class="mb-2 block text-sm font-medium text-slate-950"> Senha </label>
 
-    <span class="text-xs text-[#657477]">Mínimo de 8 caracteres</span>
+    <span class="text-xs text-slate-600">Mínimo de 8 caracteres</span>
 
     <input
       id="login-senha"
       type="password"
       autocomplete="current-password"
-      class="w-full rounded-xl border border-[#D4DEDE] bg-white px-4 py-3 text-sm text-[#263238] outline-none transition placeholder:text-[#8A989A] hover:border-[#A8BABB] focus:border-[#285C63] focus:ring-4 focus:ring-[#285C63]/15 aria-[invalid=true]:border-rose-600"
+      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-brand-400 focus:border-brand-700 focus:ring-4 focus:ring-brand-700/15 aria-[invalid=true]:border-rose-600"
       placeholder="Sua senha"
       [formField]="formularioLogin.senha"
       [attr.aria-invalid]="formularioLogin.senha().touched() && formularioLogin.senha().invalid()"
@@ -84,7 +84,7 @@
 
   <button
     type="submit"
-    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#285C63] px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#204A50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63] disabled:cursor-wait disabled:opacity-70"
+    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 disabled:cursor-wait disabled:opacity-70"
     [disabled]="enviandoFormulario()"
     [attr.aria-busy]="enviandoFormulario()"
   >
@@ -93,11 +93,11 @@
   </button>
 </form>
 
-<p class="mt-7 text-center text-sm text-[#657477]">
+<p class="mt-7 text-center text-sm text-slate-600">
   Ainda não tem uma conta?
   <a
     routerLink="/cadastro"
-    class="font-semibold text-[#285C63] underline decoration-[#8FC3C2] underline-offset-4 hover:text-[#204A50] focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#285C63]"
+    class="font-semibold text-brand-700 underline decoration-brand-500 underline-offset-4 hover:text-brand-800 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
     >Criar conta</a
   >
 </p>
