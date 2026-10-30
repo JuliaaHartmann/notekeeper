@@ -35,9 +35,40 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
-  deploy:
+  migrate:
     runs-on: windows-latest
     needs: build
+    permissions:
+      contents: read #This is required for actions/checkout
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.x"
+
+      - name: Restore dependencies
+        run: dotnet restore server/src/Api/NoteKeeper.Api.csproj
+
+      - name: Install Entity Framework CLI
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Apply ORM migrations to AzureSQL
+        env:
+          SQLSERVER_CONNECTIONSTRING: ${{ secrets.SQLSERVER_CONNECTIONSTRING }}
+          LuckyPenny__LicenseKey: ${{ secrets.LUCKYPENNY_LICENSE_KEY }}
+        run: |
+          dotnet ef database update `
+            --project server/src/Infraestrutura/NoteKeeper.Infraestrutura.csproj `
+            --startup-project server/src/Api/NoteKeeper.Api.csproj `
+            --configuration Release `
+            --connection "$env:SQLSERVER_CONNECTIONSTRING"
+
+  deploy:
+    runs-on: windows-latest
+    needs: [build, migrate]
     permissions:
       id-token: write #This is required for requesting the JWT
       contents: read #This is required for actions/checkout
@@ -54,6 +85,21 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_217C25ECFF8B4C3DB1F0FEF4BAABDC93 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_280A88E5BD724792B4DDB4BAAB66AF70 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_58425CE748E441D8BDEEF2E9E51D7468 }}
+
+      - name: Configure Azure Web App settings
+        shell: pwsh
+        env:
+          SQLSERVER_CONNECTIONSTRING: ${{ secrets.SQLSERVER_CONNECTIONSTRING }}
+          JWT_SIGNING_KEY: ${{ secrets.JWT_SIGNING_KEY }}
+          LUCKYPENNY_LICENSE_KEY: ${{ secrets.LUCKYPENNY_LICENSE_KEY }}
+        run: |
+          az webapp config appsettings set `
+            --resource-group "notekeeper" `
+            --name "notekeeper" `
+            --settings `
+            "ConnectionStrings__SqlServer=$env:SQLSERVER_CONNECTIONSTRING" `
+            "Jwt__SigningKey=$env:JWT_SIGNING_KEY" `
+            "LuckyPenny__LicenseKey=$env:LUCKYPENNY_LICENSE_KEY"
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
