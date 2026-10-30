@@ -1,3 +1,3 @@
 export const environment = {
-  urlApi: '',
+  urlApi: 'https://notekeeper-fxf5dfanbcfcbahp.canadacentral-01.azurewebsites.net',
 };
