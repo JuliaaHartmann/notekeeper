@@ -1,7 +1,7 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
-import { environment } from '../environments/environment.development';
+import { environment } from '../environments/environment';
 import { authInterceptor } from './auth/auth.interceptor';
 import { isAnonymousGuard, isAuthenticatedGuard } from './auth/auth.guards';
 import { CHAVE_ARMAZENAMENTO, URL_API } from './auth/auth.token';
@@ -69,7 +69,8 @@ const routes: Routes = [
       },
       {
         path: 'cadastrar',
-        loadComponent: () => import('./notas/cadastrar/cadastrar-nota').then((c) => c.CadastrarNota),
+        loadComponent: () =>
+          import('./notas/cadastrar/cadastrar-nota').then((c) => c.CadastrarNota),
       },
       {
         path: 'detalhes/:notaId',
